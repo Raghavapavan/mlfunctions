@@ -1,4 +1,7 @@
 def outliers(df):
+    import numpy as np
+    import pandas as pd
+    
     for i,ind in zip(range(df.shape[1]),list(df.columns)):
         lwr_bound,upr_bound = detect_outliers_iqr(df[ind])
         df[ind] = np.where(df[ind]>upr_bound, upr_bound, df[ind])
